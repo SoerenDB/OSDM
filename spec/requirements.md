@@ -40,12 +40,11 @@ passenger can own reductions, most often in the form of cards.
 A reduction has a type, a name and an issuer.
 
 Passenger information must be collected as sparsely and only if needed
-for a dedicated process step. Passenger details providing personal
-information only information required in the offer. It is not allowed to
+for a dedicated process step. Passenger details providing personal information shall only be used to meet the requirements of the offer. It is not allowed to
 send personal information not required in the offer reply. It is not
 allowed to send these personal data already in the offer request.
 
-Additional data of a passenger are title, first name, last name, phone
+Additional personal data of a passenger are title, first name, last name, phone
 numbers, emails or other social account.
 
 For certain context it might be necessary to have information about the
@@ -54,7 +53,7 @@ needed (e.g. Eurostar trains).
 
 A passenger can have a set of reduction cards.
 
-A passenger can further transport dogs, bicycle, car, motorcycle or
+A passenger can further transport dogs, bicycles, cars, motorcycles or
 trailers if this is supported by the transport vehicle.
 
 ### Requirements on Location
@@ -64,12 +63,12 @@ type station, point-of-interest, address or geo-coordinate.
 
 For railway stations the UIC code station code most be supported.
 
-To support other means of transportation the types can potentially
+To support other means of transportation the types can potentially be
 extended.
 
 ### Requirements on Trip
 
-A trip most contain the following information.
+A trip must contain the following information.
 
 - `origin`: a location where the vehicle departs
 - `destination`: a location where the vehicle arrives
@@ -77,21 +76,21 @@ A trip most contain the following information.
 - `segments`: a list of segments
 
 A segment represents a subsection of a trip that is realized with the
-same transport. In railways it is typically one train (between the
+same transport vehicle. In railways it is typically one train (between the
 moment passenger steps on-board until stepping out of that train) but
-could be using a different means of transportation. A segment has an
+could be using different means of transportation. A segment has an
 origin, a destination and duration.
 
-A vehicle is defined by a number or line and is defined by a service
+A vehicle is defined by a number or line and a service
 brand.
 
-A transfer is a special kind of segment, define how long the transfer
+A transfer is a special kind of segment, defining how long the transfer
 takes.
 
 ### Requirements on Offers
 
-An offer bundles admissions, reservation and ancillaries into an overall
-offer presented to an allocator or a distributor.
+An overall offer presented to an allocator or a distributer bundles offers
+that contain admissions, reservation and ancillaries.
 
 An offer has an overall comfort class and an overall flexibility.
 
@@ -102,15 +101,14 @@ An offer is valid for a given time.
 
 An offer can be pre-booked.
 
-An offer should span the whole trip and include all needed services.
+An offer should span at least one segment of the trip and include all needed services.
 
 #### Requirements on Admission
 
 An admission provides the right to travel on a vehicle.
 
 An admission has a price. In general, the price is calculated per
-passenger, however for DB pricing also collective pricing must be
-supported.
+passenger.
 
 An admission offer is valid for a given time. An admission offer shows
 which reductions has been applied.
@@ -135,7 +133,7 @@ A reservation has a price. A reservation can be **OPTIONAL, MANDATORY,
 INCLUDED** to an admission.
 
 A reservation offer is valid for a given time. An admission offer shows
-which reductions has been applied.
+which reductions have been applied.
 
 A reservation is linked to one or more passengers.
 
@@ -148,8 +146,8 @@ included reservation.
 
 #### Requirements on Ancillary
 
-An ancillary is a service that can be offered to a customer. Example an
-ancillary service a Wifi access or on-board meal.
+An ancillary is a service that can be offered to a customer. Examples for
+ancillary services: Wifi access or on-board meal.
 
 An ancillary has a price.
 
@@ -202,13 +200,13 @@ It must be possible to search for bookings:
 
 ### Requirements on Products
 
-A product most contain the following information:
+A product must contain the following information:
 
 - `id`: an id uniquely identifying the product, e.g. Sparschiene
 - `description`: A textual description of the product
 - `conditions`: A structured description of the sales or after-sales conditions which can be machine interpreted.
 - `refundable`: Indicates whether a product is refundable, refundable with conditions or not refundable
-- `exchangeable`: Indicates whether a product is refundable, refundable with conditions or not exchangeable
+- `exchangeable`: Indicates whether a product is exchangeable, exchangeable with conditions or not exchangeable
 - `serviceClass`: The service class describing the level of comfort.
 
 Other attributes may define the supported fulfillment media types of the
@@ -218,7 +216,7 @@ product as well as text defining service or carrier constraint.
 
 A fulfillment must be in a well-defined state (**CONFIRMED, FULFILLED,
 CHECKEDIN, REFUNDED**) and have a unique control number. The fulfillment
-must reference the offer parts covert by the fulfillment.
+must reference the offer parts covered by the fulfillment.
 
 A fulfillment must reference fulfillment documents (aka. tickets).
 Fulfillment documents in form of a UIC PDF ticket most be supported by
@@ -237,11 +235,11 @@ For a given a booking a refund can be requested.
 
 A refund can have a fee.
 
-Cancellation (a.k.a. as revoke) is a special kind of refund where no
+Cancellation (a.k.a. revoke) is a special kind of refund where no
 fees apply, and the complete amount is returned.
 
 Cancellation must be supported by all parties. Total refund must be
-supported by all parties
+supported by all parties.
 
 ### Requirements on partial refund or exchange
 
@@ -264,7 +262,6 @@ Users of the data:
   offers based on the fare data (automated)
 - The passenger in a readable form to know which transport connections
   he can use (manual)
-
 - A controller to validate the ticket on a train or station or station
   (manual and/or automated (e.g. gates))
 
