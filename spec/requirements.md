@@ -40,7 +40,8 @@ passenger can own reductions, most often in the form of cards.
 A reduction has a type, a name and an issuer.
 
 Passenger information must be collected as sparsely and only if needed
-for a dedicated process step. Passenger details providing personal information shall only be used to meet the requirements of the offer. It is not allowed to
+for a dedicated process step. Passenger details providing personal information 
+shall only be used to meet the requirements of the offer. It is not allowed to
 send personal information not required in the offer reply. It is not
 allowed to send these personal data already in the offer request.
 
@@ -299,7 +300,7 @@ The end of a route of one carrier when combined to another route of
 another carrier is indicated with an additional “(FR)” in the human
 readable form if it is not at a “real” station.
 
-Are routes used as line routes or as bubble routes?
+##### Are routes used as line routes or as bubble routes?
 
 `A*B/D*C` as line routes: `A-E-C` is not allowed
 
@@ -335,12 +336,12 @@ Route for dynamic fares:
     requested online
 
 - Train bound (carrier 1) + Train bound (carrier 2)
-  - Train bound offer until the border point on both sides
+  - Train bound offer until the border point/connection point on both sides
   - Train bound can be combined into one
 
 - Train bound (carrier 1) + route (carrier 2)
-  - Train bound offer until the border point
-  - Route description from the border point onwards
+  - Train bound offer until the border point/connection point
+  - Route description from the border point/connection point onwards
 
 #### Connection Point
 
@@ -359,7 +360,7 @@ connections.
 
 As on both sides of a connection multiple small stations could be
 connected and not all of them might be in the timetable of a train the
-connections point should allow to connect sets of stations.
+connection point should allow to connect sets of stations.
 
 *Implementation:* **ConnectionPoint**
 
@@ -406,7 +407,7 @@ fare.
 
 **SalesAvailability**  defines the constraints on the
 time when a sale of a fare can start or end. The sales availability is
-used in the offline data exchange only. A constraint is provides as a
+used in the offline data exchange only. A constraint is provided as a
 list of salesRestrictions that have to be applied.
 
 Sales restrictions can define a start and end of the sale relative to
@@ -544,16 +545,13 @@ items carried by a passenger.
 A fare might be available with a specific number of passengers only
 (group fares):
 
-- Minimum number of passengers (adults + seniors + children + youths +
-  Accompanying Person for PRM)
-
-- Minimum number of adults + seniors + (children + youths) / 2
+The passenger weight of each passenger type needs to be considered.
 
 *Implementation:* **PassengerConstraint**
 
 ### Requirements on validity for reductions
 
-Reductions are price reduction due to a reduction “card” an existing
+Reductions are price reductions due to a reduction “card” an existing
 ticket or a pass which the passenger already holds. It might be that the
 physical card does not correspond to a specific reduction but provides
 the option to carry different reductions.
@@ -593,9 +591,9 @@ customer to claim a refund. The VAT details include:
 
 The VAT given is the VAT the carrier pays for this fare to the countries
 where he is providing his service. The VAT might depend additionally on
-whether the fare is issued as national ticket or integrated in an
-international ticket. Also, the VAT might depend on whether the fare is
-used for short distance or integrated in a long-distance ticket
+whether the fare is issued as national ticket, international ticket or integrated 
+in an international ticket. Also, the VAT might depend on whether the fare is
+used for short distance or integrated in a long-distance ticket.
 
 **Note**: There are national rules on where and when to display the
 VAT on a ticket or receipt when a ticket is sold in that country. These
@@ -672,7 +670,7 @@ The Required personal data might depend on the fulfillment:
 
 - Depending on border crossing and train types (Belgium border crossing of high-speed trains requires personal data)
 
-- Data might be required for ticket holder(s) only or for all passengers
+- Data might be required for ticket holders only or for all passengers
 
 *Implementation*: **PersonalDataConstraint**
 
@@ -694,7 +692,7 @@ The allocator needs to find where he can request offers online.
 
 #### Indication of train links on the ticket
 
-Ticket might be linked to the use of specific trains even in case there
+Tickets might be linked to the use of specific trains even in case there
 is no reservation. There are different options on how to indicate this
 restriction:
 
@@ -707,9 +705,9 @@ should replace the route description for the part of the train bound*
 
 Train link should include:
 
-- Train number
-- Service Brand Abbreviation (RJ, ICE,) (can be retrieved from timetable data)
 - Date and departure time
+- Service Brand Abbreviation (e.g. RJ, ICE) (can be retrieved from timetable data)
+- Train number
 - Departure Station (short name)
 - Arrival Station (short name)
 
@@ -720,7 +718,7 @@ Train link should include:
   - To check whether it is international
   - To check that it is not inside some regional tariff area
   - To calculate the correct VAT
-  - To check for supplements applicable only at the start of end of the journey
+  - To check for supplements applicable only at the start or end of the journey
 
 - The part where the offer should be built must be provided
 
